@@ -1,0 +1,152 @@
+{
+  "pages": [
+    {
+      "path": "pages/login/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/register/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/chat/list",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "消息"
+      }
+    },
+    {
+      "path": "pages/chat/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/contacts/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "通讯录"
+      }
+    },
+    {
+      "path": "pages/contacts/add-friend",
+      "style": {
+        "navigationBarTitleText": "添加好友"
+      }
+    },
+    {
+      "path": "pages/contacts/friend-requests",
+      "style": {
+        "navigationBarTitleText": "新的朋友"
+      }
+    },
+    {
+      "path": "pages/discover/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "发现"
+      }
+    },
+    {
+      "path": "pages/moments/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "朋友圈"
+      }
+    },
+    {
+      "path": "pages/moments/create",
+      "style": {
+        "navigationBarTitleText": "发布动态"
+      }
+    },
+    {
+      "path": "pages/ai/chat",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "AI 助手"
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我"
+      }
+    },
+    {
+      "path": "pages/profile/edit",
+      "style": {
+        "navigationBarTitleText": "编辑个人信息"
+      }
+    },
+    {
+      "path": "pages/group/list",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "群聊"
+      }
+    },
+    {
+      "path": "pages/group/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/group/create",
+      "style": {
+        "navigationBarTitleText": "创建群聊"
+      }
+    },
+    {
+      "path": "pages/group/info",
+      "style": {
+        "navigationBarTitleText": "群聊信息"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Mychant",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F5F5F5"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#999999",
+    "selectedColor": "#07C160",
+    "backgroundColor": "#F7F7F7",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/chat/list",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/contacts/index",
+        "text": "通讯录"
+      },
+      {
+        "pagePath": "pages/discover/index",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我"
+      }
+    ]
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {}
+  }
+}

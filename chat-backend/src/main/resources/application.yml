@@ -1,0 +1,78 @@
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 500
+      min-spare: 20
+    max-connections: 10000
+    accept-count: 200
+
+spring:
+  application:
+    name: chat-backend
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/chat_app?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: Aa123456#
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+
+  # JSON 序列化
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+
+  # WebSocket STOMP 消息大小限制
+  web-socket:
+    max-text-message-size: 8192
+    max-binary-message-size: 8192
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.chat.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    #MyBatis SQL 打印
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# 消息保留天数（超过此天数的消息将被定时清理）
+message:
+  retention-days: 7
+
+# JWT 配置
+jwt:
+  secret: Y2hhdC1hcHAtc2VjcmV0LWtleS1mb3Itand0LXRva2VuLWdlbmVyYXRpb24tMjAyNA==
+  expiration: 604800000  # 7天，单位毫秒
+
+# AI 配置（硅基流动 SiliconFlow）
+deepseek:
+  api-key: sk-irqooufqjmjyseobiwgmaxefmhsbomqadympxilcnjkbrlir
+  api-url: https://api.siliconflow.cn/v1/chat/completions
+  model: Qwen/Qwen2.5-7B-Instruct
+
+# 日志配置（高并发时保持 WARN 级别，开发调试时可改为 debug）
+logging:
+  level:
+    com.chat: warn
+    org.springframework.web.socket: warn
+    org.springframework.messaging: warn
