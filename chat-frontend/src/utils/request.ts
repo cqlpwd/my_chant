@@ -3,9 +3,16 @@
  */
 
 // 后端 API 基础地址
-// H5 开发环境使用相对路径，走 Vite 代理，避免跨域和后端未启动时的混乱
-// 小程序/App 请改为实际后端地址
+// H5：使用相对路径，走 Vite 代理（/api、/uploads），
+// 这样 HTTPS 页面不会因请求 http 后端触发混合内容拦截，也能避免跨域
+// 小程序/App：无法走浏览器代理，使用局域网绝对地址
+// #ifdef H5
+const BASE_URL = ''
+// #endif
+
+// #ifndef H5
 const BASE_URL = 'http://10.116.22.160:8080'
+// #endif
 
 interface RequestOptions {
   url: string

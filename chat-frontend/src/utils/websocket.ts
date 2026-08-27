@@ -3,8 +3,16 @@
  * 使用 SockJS + STOMP 子协议
  */
 
-// H5 开发环境使用相对路径，走 Vite 代理；其他平台使用实际地址
+// H5：使用相对路径，走 Vite 代理（/ws）。
+// SockJS 会自动基于当前页面地址解析，页面是 https 时自动使用 wss 协议。
+// 小程序/App：无法走浏览器代理，使用局域网绝对地址。
+// #ifdef H5
+const WS_BASE_URL = ''
+// #endif
+
+// #ifndef H5
 const WS_BASE_URL = 'http://10.116.22.160:8080'
+// #endif
 
 class WebSocketManager {
   private stompClient: any = null
