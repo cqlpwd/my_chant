@@ -90,12 +90,13 @@ async function handleLogin() {
   try {
     await userStore.login(form.value.phone.trim(), form.value.password.trim())
     uni.showToast({ title: '登录成功', icon: 'success' })
+    // 成功后保持 loading 锁定，避免跳转前的 500ms 窗口内再次点击触发重复请求
     setTimeout(() => {
       uni.switchTab({ url: '/pages/chat/list' })
     }, 500)
   } catch (e: any) {
     uni.showToast({ title: e.message || '登录失败', icon: 'none' })
-  } finally {
+    // 仅失败时解锁，允许重新尝试
     loading.value = false
   }
 }

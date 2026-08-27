@@ -206,13 +206,15 @@ function getGroupMemberAvatars(groupId?: number): string[] {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
+  background-color: #f0f0f0;
+  border-radius: 32rpx;
+  overflow: hidden;
 }
 
 .nav-bar {
   height: 88rpx;
   padding-top: var(--status-bar-height, 44px);
-  background-color: #f5f5f5;
+  background-color: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,10 +227,9 @@ function getGroupMemberAvatars(groupId?: number): string[] {
   }
 }
 
-
-
 .conversation-list {
   flex: 1;
+  padding: 20rpx 24rpx;
 }
 
 .conversation-item {
@@ -236,10 +237,12 @@ function getGroupMemberAvatars(groupId?: number): string[] {
   align-items: center;
   padding: 24rpx 30rpx;
   background-color: #ffffff;
-  margin-bottom: 1rpx;
+  border-radius: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
 
   &:active {
-    background-color: #f5f5f5;
+    background-color: #f2f2f2;
   }
 }
 
@@ -250,7 +253,7 @@ function getGroupMemberAvatars(groupId?: number): string[] {
   .avatar {
     width: 100rpx;
     height: 100rpx;
-    border-radius: 12rpx;
+    border-radius: 50%;
     background-color: #e0e0e0;
   }
 

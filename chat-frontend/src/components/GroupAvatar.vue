@@ -52,7 +52,7 @@ const gridClass = computed(() => {
 <style lang="scss" scoped>
 .group-avatar {
   flex-shrink: 0;
-  border-radius: 12rpx;
+  border-radius: 50%;
   overflow: hidden;
   background-color: #e0e0e0;
 }

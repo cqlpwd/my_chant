@@ -98,6 +98,7 @@ onMounted(() => {
   justify-content: space-around;
   background-color: #F7F7F7;
   border-top: 1rpx solid rgba(0, 0, 0, 0.08);
+  border-radius: 0 0 32rpx 32rpx;
   padding-bottom: env(safe-area-inset-bottom);
   z-index: 999;
 }

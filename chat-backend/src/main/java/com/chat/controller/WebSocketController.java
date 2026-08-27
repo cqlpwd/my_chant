@@ -164,6 +164,32 @@ public class WebSocketController {
     }
 
     /**
+     * 处理视频通话信令（WebRTC），仅做点对点转发，不解析媒体内容
+     * 客户端发送到：/app/call.signal
+     * payload 示例:
+     *   { receiverId, type: CALL_OFFER,   sdp }          发起呼叫（携带 offer）
+     *   { receiverId, type: CALL_ANSWER,  sdp }          接听（携带 answer）
+     *   { receiverId, type: CALL_ICE,     candidate }    交换 ICE 候选
+     *   { receiverId, type: CALL_HANGUP }                挂断
+     *   { receiverId, type: CALL_REJECT }                拒绝
+     *   { receiverId, type: CALL_BUSY }                  对方忙线
+     */
+    @MessageMapping("/call.signal")
+    public void callSignal(@Payload Map<String, Object> payload, Principal principal) {
+        Long senderId = getUserIdFromPrincipal(principal);
+        Long receiverId = Long.valueOf(payload.get("receiverId").toString());
+        String type = payload.getOrDefault("type", "UNKNOWN").toString();
+
+        Map<String, Object> signal = new HashMap<>(payload);
+        signal.put("fromId", senderId);
+        signal.put("type", type);
+        signal.remove("receiverId"); // 对端只需要知道自己收到的信令类型
+
+        log.info("[WS-通话] 转发信令: {} -> {}, type={}", senderId, receiverId, type);
+        messagingTemplate.convertAndSendToUser(receiverId.toString(), "/queue/call", signal);
+    }
+
+    /**
      * 处理群聊消息
      * 客户端发送到：/app/group.send
      */

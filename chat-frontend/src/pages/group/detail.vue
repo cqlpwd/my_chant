@@ -187,6 +187,8 @@ function scrollToBottom() {
   display: flex;
   flex-direction: column;
   background-color: #ededed;
+  border-radius: 32rpx;
+  overflow: hidden;
 }
 
 /* 顶部导航栏 — 固定 */

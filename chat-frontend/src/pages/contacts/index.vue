@@ -191,13 +191,15 @@ async function onRefresh() {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
+  background-color: #f0f0f0;
+  border-radius: 32rpx;
+  overflow: hidden;
 }
 
 .nav-bar {
   height: 88rpx;
   padding-top: var(--status-bar-height, 44px);
-  background-color: #f5f5f5;
+  background-color: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: center;

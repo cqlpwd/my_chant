@@ -4,7 +4,7 @@
  */
 
 // H5 开发环境使用相对路径，走 Vite 代理；其他平台使用实际地址
-const WS_BASE_URL = 'http://10.116.23.158:8080'
+const WS_BASE_URL = 'http://10.116.22.160:8080'
 
 class WebSocketManager {
   private stompClient: any = null
@@ -96,6 +96,16 @@ class WebSocketManager {
     )
     this.subscriptions.set('notification', notifySub)
 
+    const callSub = this.stompClient.subscribe(
+      `/user/queue/call`,
+      (message: any) => {
+        const body = JSON.parse(message.body)
+        console.log('[WS] 收到通话信令:', body)
+        this.messageHandlers.forEach(handler => handler(body))
+      }
+    )
+    this.subscriptions.set('call', callSub)
+
     const statusSub = this.stompClient.subscribe(
       `/user/queue/friend-status`,
       (message: any) => {
@@ -142,6 +152,16 @@ class WebSocketManager {
     this.stompClient.send(
       '/app/friend.request',
       JSON.stringify({ receiverId }),
+      {}
+    )
+  }
+
+  /** 发送视频通话信令（WebRTC） */
+  sendCallSignal(receiverId: number, type: string, data: Record<string, any> = {}) {
+    if (!this.stompClient || !this.isConnected) return
+    this.stompClient.send(
+      '/app/call.signal',
+      JSON.stringify({ receiverId, type, ...data }),
       {}
     )
   }

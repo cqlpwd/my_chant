@@ -5,7 +5,7 @@
 // 后端 API 基础地址
 // H5 开发环境使用相对路径，走 Vite 代理，避免跨域和后端未启动时的混乱
 // 小程序/App 请改为实际后端地址
-const BASE_URL = 'http://10.116.23.158:8080'
+const BASE_URL = 'http://10.116.22.160:8080'
 
 interface RequestOptions {
   url: string
